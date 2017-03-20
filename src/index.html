@@ -1,0 +1,52 @@
+<html ng-app="jiggyJournal">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Jiggy Journal</title>
+    <base href="/">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="/index.js"></script>
+
+  </head>
+  <body ng-controller="MainController">
+
+    <div class="toast" ng-repeat="alarm in alarms">
+      {{ alarm.message }}
+    </div>
+
+    <nav>
+      <div class="nav-wrapper purple darken-2">
+        <span class="brand-logo">Jiggy Journal</span>
+        <ul id="nav-mobile" class="right">
+          <li ng-class="isAccountNavActive() ? 'active' : ''">
+            <a ng-href="#/account">Account</a>
+          </li>
+          <li ng-class="isEntriesNavActive() ? 'active' : ''">
+            <a ng-href="#/entries">Entries</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="main-content" ng-show="user">
+      <div ng-view></div>
+    </div>
+
+    <div class="login-prompt" ng-show="needsLogin">
+      <div class="login-header">
+        Please sign in to continue
+      </div>
+      <div id="firebase-login-widget"></div>
+    </div>
+
+    <div ng-show="!user && !needsLogin">
+      <div class="spinner" ng-show="!user && !needsLogin">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+  </body>
+</html>

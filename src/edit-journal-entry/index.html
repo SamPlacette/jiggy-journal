@@ -1,0 +1,63 @@
+<article class="edit-journal-entry">
+  <div ng-show="entry">
+
+    <header class="row">
+      <div class="btn red right"
+          ng-show="entry.edited"
+          ng-click="startDelete()">
+        <i class="material-icons">delete</i>
+      </div>
+
+      <h5>
+        {{ entry.edited
+            ? 'Edit Entry'
+            : 'New Entry' }}
+        <div class="subtitle">
+          {{ (entry.edited
+              ? ('Created ' +
+                  timeutils.formatReadable(entry.time) +
+                  ' (' + timeutils.formatDifferenceReadable(entry.time) + ')')
+              : timeutils.formatReadable(entry.time)) }}
+        </div>
+      </h5>
+
+      <div class="modal-container" ng-show="deleting">
+        <div class="modal">
+          <div class="modal-content">
+            <h4>Are you sure?</h4>
+            <p>There is no undo!</p>
+          </div>
+          <div class="modal-footer">
+            <div class="modal-action btn-flat red" ng-click="cancelDelete()">
+              No, get me out of here!
+            </div>
+            <div class="modal-action btn-flat" ng-click="confirmDelete()">
+              Aye, do it
+            </div>
+          </div>
+        </div>
+        <div class="modal-overlay"></div>
+      </div>
+    </header>
+
+    <form class="entry-form" ng-submit="save()">
+      <label>Title</label>
+      <input type="text" ng-model="entry.title" />
+
+      <label>Journal</label>
+      <textarea class="materialize-textarea" ng-model="entry.value" required></textarea>
+
+      <div class="fixed-action-btn">
+        <button class="btn-floating btn-large purple darken-3" type="submit">
+          <i class="material-icons">done</i>
+        </a>
+      </div>
+    </form>
+  </div>
+  <div ng-hide="entry">
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,36 @@
+{
+  "name": "jiggy-journal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "mkdir -p build",
+    "build": "env-cmd .env browserify -g envify -g browserify-css -g stringify src/index.js > build/index.js && cp src/index.html build/index.html && echo Build Complete",
+    "watch": "watch \"npm run build\" ./src",
+    "start": "node src/server",
+    "predeploy": "mkdir -p dist",
+    "deploy": "cp -R build/* dist/ && uglifyjs build/index.js > dist/index.js && scp ./dist/* splac@samplacette.com:jiggyjournal.samplacette.com/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-route": "^1.6.3",
+    "firebase": "^3.7.2",
+    "firebaseui": "^1.0.0",
+    "materialize-css": "^0.98.0",
+    "moment": "^2.18.0"
+  },
+  "devDependencies": {
+    "browserify": "^14.1.0",
+    "browserify-css": "^0.10.0",
+    "env-cmd": "^5.0.0",
+    "envify": "^4.0.0",
+    "express": "^4.15.2",
+    "stringify": "^5.1.0",
+    "uglify-js": "github:mishoo/UglifyJS2#harmony",
+    "watch": "^1.0.2"
+  }
+}

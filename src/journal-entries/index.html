@@ -1,0 +1,30 @@
+<article class="journal-entries">
+
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large purple darken-3" ng-href="#/entries/new">
+      <i class="material-icons">add</i>
+    </a>
+  </div>
+
+  <div class="collection entry-collection" ng-show="entries.length">
+    <a class="collection-item entry-item"
+        ng-repeat="entry in entries" ng-href="#/entries/{{ entry.time }}">
+      <span ng-class="'entry-title ' + (entry.title ? '' : 'entry-untitled')">
+        {{ entry.title || 'Untitled' }}
+      </span>
+      <small>{{ timeutils.formatReadable(entry.time) }}</small>
+      <span class="secondary-content">
+        <i class="material-icons">keyboard_arrow_right</i>
+      </span>
+    </a>
+  </div>
+
+  <div ng-show="!entries.length">
+    <p>
+      It looks like you haven't created any entries yet.
+    </p>
+    <p>
+      Try clicking the button above to get started.
+    </p>
+  </div>
+</article>

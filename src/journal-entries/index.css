@@ -1,0 +1,14 @@
+.journal-entries a.entry-item {
+  color: inherit;
+}
+.journal-entries .entry-title {
+  width: 40%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: top;
+}
+.journal-entries .entry-untitled {
+  color: #777;
+}
