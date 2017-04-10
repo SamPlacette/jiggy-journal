@@ -22,6 +22,8 @@ The configurable web journal. Jigger it up to fit your personal needs.
 
  - Lock down permissions in Firebase
  - Over 1MB minified? What? Haven't looked into this yet, but I suspect Firebase
+  - Firebase (and FirebaseUI) are responsible for ~425KB of minified JS
+  - Angular is responsible for ~285KB of minified JS
  - Media Library
  - Journal templates
  - Journal schedules

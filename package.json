@@ -10,7 +10,8 @@
     "watch": "watch \"npm run build\" ./src",
     "start": "node src/server",
     "predeploy": "mkdir -p dist",
-    "deploy": "cp -R build/* dist/ && uglifyjs build/index.js > dist/index.js && scp ./dist/* splac@samplacette.com:jiggyjournal.samplacette.com/"
+    "compile": "cp -R build/* dist/ && uglifyjs build/index.js > dist/index.js",
+    "deploy": "npm run compile && scp ./dist/* splac@samplacette.com:jiggyjournal.samplacette.com/"
   },
   "keywords": [],
   "author": "",
